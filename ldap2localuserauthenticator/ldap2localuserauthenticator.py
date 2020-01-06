@@ -89,7 +89,7 @@ if __name__ == "__main__":
     sf += "(&(o={o})(mail={mail}))".format(o="yourOrganisation", mail="yourMailAddress")
     c.search_filter = "(&({{userattr}}={{username}})(|{}))".format(sf)
     c.auth_state_attributes = c.attributes
-    c.local_users = {}
+    c.local_users = set()
     # Beware of this template - it should be tested carefully
     c.local_useradd_template = f"useradd -m -d /home/{{uid}} -s /bin/bash {{uid}} -c \"{{cn}} - {{mail}} - {datetime.datetime.now():%Y-%m}/{{o}}/{{ou}}/\"\n"
     username = input("Username: ")
